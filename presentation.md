@@ -1,30 +1,30 @@
 ---
-title: "My wonderful presentation"
-author: "Alexey Gumirov"
-institute: "My home office"
-topic: "Pandoc how-to"
+title: "ChargeHere Presentation Template"
+author: "Marius Hegele"
+institute: "ChargeHere GmbH"
+topic: "EV Charging"
 theme: "Frankfurt"
-colortheme: "beaver"
+colortheme: "crane"
 fonttheme: "professionalfonts"
-mainfont: "Hack Nerd Font"
+mainfont: "Fira Code"
 fontsize: 11pt
 urlcolor: red
 linkstyle: bold
 aspectratio: 169
-titlegraphic: img/aleph0.png
-logo: img/aleph0-small.png
-date:
+titlegraphic:  # img/png_ChargeHere_Bild-Logo.png
+logo: # img/png_ChargeHere_Bild-Logo.png 
+date: 2025-06-18
 section-titles: false
 toc: true
 ---
 
 # General information
 
-## Themes, fonts, etc.
+## Themes, fonts, etc
 
 - I use default **pandoc** themes.
 - This presentation is made with **Frankfurt** theme and **beaver** color theme.
-- I like **professionalfonts** font scheme. 
+- I like **professionalfonts** font scheme.
 
 ## Links
 
@@ -33,6 +33,7 @@ toc: true
 - Nerd Fonts: [https://nerdfonts.com](https://nerdfonts.com)
 
 # Formatting
+
 ## Text formatting
 
 Normal text.
@@ -52,11 +53,11 @@ Normal text.
 - Line A
 - Line B
 
-### 
+###
 
 New block without header.
 
-### This is a block B.
+### This is a block B
 
 - Line C
 - Line D
@@ -70,7 +71,8 @@ Listings out of the block.
 echo "Hello world!"
 echo "line"
 ```
-### Listings in the block.
+
+### Listings in the block
 
 ```sh
 #!/bin/bash
@@ -86,7 +88,7 @@ Item A | Item A description | 2
 Item B | Item B description | 5
 Item C | N/A | 100
 
-## Single picture 
+## Single picture
 
 This is how we insert picture. Caption is produced automatically from the alt text.
 
@@ -94,13 +96,14 @@ This is how we insert picture. Caption is produced automatically from the alt te
 ![Aleph 0](img/aleph0.png) 
 ```
 
-![Aleph 0](img/aleph0.png) 
+![Aleph 0](img/aleph0.png)
 
 ## Two or more pictures in a raw
 
 Here are two pictures in the raw. We can also change two pictures size (height or width).
 
 ###
+
 ```
 ![](img/aleph0.png){height=10%}\ ![](img/aleph0.png){height=30%} 
 ```
@@ -111,10 +114,11 @@ Here are two pictures in the raw. We can also change two pictures size (height o
 
 1. Idea 1
 2. Idea 2
-	- genius idea A
-	- more genius 2
-3. Conclusion
 
+- genius idea A
+- more genius 2
+
+3. Conclusion
 
 ## Two columns of equal width
 
