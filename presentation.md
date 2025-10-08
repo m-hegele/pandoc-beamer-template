@@ -8,7 +8,7 @@ colortheme: "crane"
 fonttheme: "professionalfonts"
 mainfont: "Fira Code"
 fontsize: 11pt
-urlcolor: red
+urlcolor: blue
 linkstyle: bold
 aspectratio: 169
 titlegraphic:  # img/png_ChargeHere_Bild-Logo.png

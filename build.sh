@@ -19,15 +19,42 @@ SOURCE_FORMAT="markdown_strict\
 DATA_DIR="pandoc"
 PDF_ENGINE="lualatex"
 
-case "$1" in
-"-preamble")
-	OUTPUT=presentation_nice_formatting.pdf
-	pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --data-dir="${DATA_DIR}" --template default_mod.latex -H pandoc/templates/preamble.tex --pdf-engine "${PDF_ENGINE}" -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -t beamer presentation.md -o $OUTPUT
-	;;
-*)
-	OUTPUT=presentation.pdf
-	pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --data-dir="${DATA_DIR}" --template default_mod.latex --pdf-engine "${PDF_ENGINE}" -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -t beamer presentation.md -o $OUTPUT
-	;;
-esac
+mkdir -p build/
+
+if [ "$1" = "" ]; then
+	echo Pass path to presentation as first argument
+	exit 1
+fi
+
+INPUT=$1
+OUTPUT="build/$(basename "$1" .md).pdf"
+
+echo Rendering $INPUT in $OUTPUT
+
+pandoc -s --dpi=300 \
+	--slide-level 2 \
+	--toc \
+	--shift-heading-level=0 \
+	--data-dir="${DATA_DIR}" \
+	--template default_mod.latex \
+	--pdf-engine "${PDF_ENGINE}" \
+	--pdf-engine-opt=-shell-escape \
+	-f "$SOURCE_FORMAT" \
+	-M date="$DATE_COVER" \
+	-V classoption:aspectratio=169 \
+	-t beamer \
+	--filter ./pandoc-minted.py \
+	$INPUT -o $OUTPUT
+
+# case "$1" in
+# "-preamble")
+# 	OUTPUT=presentation_nice_formatting.pdf
+# 	pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --data-dir="${DATA_DIR}" --template default_mod.latex -H pandoc/templates/preamble.tex --pdf-engine "${PDF_ENGINE}" -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -t beamer presentation.md -o $OUTPUT
+# 	;;
+# *)
+# 	OUTPUT=presentation.pdf
+# 	pandoc -s --dpi=300 --slide-level 2 --toc --listings --shift-heading-level=0 --data-dir="${DATA_DIR}" --template default_mod.latex --pdf-engine "${PDF_ENGINE}" -f "$SOURCE_FORMAT" -M date="$DATE_COVER" -V classoption:aspectratio=169 -t beamer presentation.md -o $OUTPUT
+# 	;;
+# esac
 
 echo Successfully generated slides in $OUTPUT

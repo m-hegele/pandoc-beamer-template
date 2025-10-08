@@ -422,6 +422,12 @@ $for(bibliography)$
 $endfor$
 $endif$
 
+% BEGIN CUSTOM PACKAGES
+\usepackage{minted}
+\usemintedstyle{default}
+\setminted{breaklines}
+% END CUSTOM PACKAGES
+
 $if(title)$
 \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
